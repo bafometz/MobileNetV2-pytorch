@@ -216,14 +216,15 @@ def train_network(start_epoch, epochs, scheduler, model, train_loader, val_loade
 
         if test_accuracy1 > best_test:
             best_test = test_accuracy1
-
-    csv_logger.write_text('Best accuracy is {:.2f}% top-1'.format(best_test * 100.))
         print('Best accuracy is {:.2f}% top-1'.format(best_test * 100.))
         temp_dict = {'epoch': epoch + 1, 'val_error1': 1 - test_accuracy1, 'val_error5': 1 - test_accuracy5,
-                          'val_loss': test_loss, 'train_error1': 1 - train_accuracy1,
-                          'train_error5': 1 - train_accuracy5, 'train_loss': train_loss}
+                                  'val_loss': test_loss, 'train_error1': 1 - train_accuracy1,
+                                  'train_error5': 1 - train_accuracy5, 'train_loss': train_loss}
         for x in temp_dict:
             print(x , ":",  temp_dict[x])
+
+    csv_logger.write_text('Best accuracy is {:.2f}% top-1'.format(best_test * 100.))
+
 
 if __name__ == '__main__':
     main()
