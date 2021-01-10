@@ -17,10 +17,6 @@ def inception_preproccess(input_size, normalize=__imagenet_stats):
         transforms.ToTensor(),
         transforms.Normalize(**normalize),
         transforms.RandomHorizontalFlip(),
-        transforms.RandomResizedCrop(input_size,  scale = (min_scale, 5.0)),
-        transforms.RandomResizedCrop(input_size, scale = (min_scale, 0.8)),
-        transforms.RandomHorizontalFlip(),
-        transforms.Resize(229)
     ])
 
 
