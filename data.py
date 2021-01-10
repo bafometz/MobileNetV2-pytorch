@@ -15,7 +15,12 @@ def inception_preproccess(input_size, normalize=__imagenet_stats):
         transforms.RandomResizedCrop(input_size),
         transforms.RandomHorizontalFlip(),
         transforms.ToTensor(),
-        transforms.Normalize(**normalize)
+        transforms.Normalize(**normalize),
+        transforms.RandomHorizontalFlip(),
+        transforms.RandomResizedCrop(input_size,  scale = (min_scale, 5.0)),
+        transforms.RandomResizedCrop(input_size, scale = (min_scale, 0.8)),
+        transforms.RandomHorizontalFlip(),
+        transforms.Resize(229)
     ])
 
 
@@ -50,3 +55,5 @@ def get_loaders(dataroot, val_batch_size, train_batch_size, input_size, workers)
     train_loader = torch.utils.data.DataLoader(train_data, batch_size=train_batch_size, shuffle=True,
                                                num_workers=workers, pin_memory=True)
     return train_loader, val_loader
+
+def moreAugmentation(augmentNum):
