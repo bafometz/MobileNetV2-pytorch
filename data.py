@@ -13,7 +13,7 @@ __imagenet_stats = {'mean': [0.485, 0.456, 0.406],
 def inception_preproccess(input_size, normalize=__imagenet_stats):
     return transforms.Compose([
         transforms.RandomResizedCrop(input_size),
-        transforms.RandomHorizontalFlip(),
+        transforms.RandomVerticalFlip(),
         transforms.ToTensor(),
         transforms.Normalize(**normalize),
         transforms.ColorJitter(brightness=0.3, contrast=0.4, saturation=0.6, hue=0.5)
