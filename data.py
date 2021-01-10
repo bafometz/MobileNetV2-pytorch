@@ -16,7 +16,7 @@ def inception_preproccess(input_size, normalize=__imagenet_stats):
         transforms.RandomHorizontalFlip(),
         transforms.ToTensor(),
         transforms.Normalize(**normalize),
-        transforms.RandomHorizontalFlip(),
+        transforms.ColorJitter(brightness=0.3, contrast=0.4, saturation=0.6, hue=0.5)
     ])
 
 
